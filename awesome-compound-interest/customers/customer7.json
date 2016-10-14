@@ -1,0 +1,16 @@
+{
+	"name": "Ilana",
+	"age": 26,
+	"finances": {
+		"startcapital": 3000,
+		"monthlyadd": 750
+	},
+	"pension": {
+		"age": 65,
+		"interest": {
+			"pessimistic": 1.02,
+			"average": 1.04,
+			"optimistic": 1.08
+		}
+	}
+}

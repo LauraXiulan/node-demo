@@ -1,0 +1,16 @@
+{
+	"name": "Machteld",
+	"age": 24,
+	"finances": {
+		"startcapital": 2500,
+		"monthlyadd": 300
+	},
+	"pension": {
+		"age": 65,
+		"interest": {
+			"pessimistic": 1.02,
+			"average": 1.04,
+			"optimistic": 1.08
+		}
+	}
+}
