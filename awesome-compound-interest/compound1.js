@@ -12,12 +12,20 @@ let prettyNr = (number) => {
 	return addCommas(roundDecimal(number))
 }
 
-fs.readdir(__dirname + '/customers', 'utf-8', (err, data) => {
+let result = ""
+let resultArray = []
+
+fs.readdir('./customers', 'utf-8', (err, data) => {
+	if(err) {
+		throw err
+	} 
 	for(let j = 0; j < data.length; j++) { 
-		fs.readFile(data[j], 'utf-8', function(err, data) {
-			console.log(data)
-			//let parsedData = JSON.parse(files)
-		//	calcCompound(parsedData)
+		fs.readFile('./customers/' + data[j], 'utf-8', function(err2, file) {
+			if(err2) {
+				throw err2
+			}
+			let parsedData = JSON.parse(file)
+			calcCompound(parsedData)
 		})
 	}
 })
@@ -46,6 +54,23 @@ let calcCompound = (customer) => {
 		console.log("In a pessimistic scenario: €" 	+ prettyNr(customer.pension.endamount.pessimistic))
 		console.log("In a average scenario: €" 		+ prettyNr(customer.pension.endamount.average))
 		console.log("In a optimistic scenario: €" 	+ prettyNr(customer.pension.endamount.optimistic))
-}
+
+		let result = {
+			name: customer.name,
+			startcapital: customer.finances.startcapital,
+			monthly: customer.finances.monthlyadd,
+			pensionage: customer.pension.age,
+			pessimistic: "€" + prettyNr(customer.pension.endamount.pessimistic),
+			average: "€" + prettyNr(customer.pension.endamount.average),
+			optimistic: "€" + prettyNr(customer.pension.endamount.optimistic)
+		}
+		resultArray.push(result)
+		let makeJson = JSON.stringify(resultArray)
+		fs.writeFile(__dirname + '/customerprojections.json', makeJson, function(mistake) {
+			if(mistake) {
+				throw mistake
+			}
+		})
+}	
 
 module.exports = fs.readdir
