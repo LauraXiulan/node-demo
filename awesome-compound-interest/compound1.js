@@ -5,7 +5,7 @@ let roundDecimal = (number) => {
 }
 
 let addCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
 let prettyNr = (number) => {
@@ -20,7 +20,7 @@ fs.readdir('./customers', 'utf-8', (err, data) => {
 		throw err
 	} 
 	for(let j = 0; j < data.length; j++) { 
-		fs.readFile('./customers/' + data[j], 'utf-8', function(err2, file) {
+		fs.readFile('./customers/' + data[j], 'utf-8', (err2, file) => {
 			if(err2) {
 				throw err2
 			}
@@ -31,7 +31,7 @@ fs.readdir('./customers', 'utf-8', (err, data) => {
 })
 
 let calcCompound = (customer) => {
-		customer.pension.endamount = {
+	customer.pension.endamount = {
 		pessimistic: 	customer.finances.startcapital,
 		average: 		customer.finances.startcapital,
 		optimistic: 	customer.finances.startcapital
@@ -47,30 +47,30 @@ let calcCompound = (customer) => {
 		customer.pension.endamount.optimistic 	*= customer.pension.interest.optimistic
 	}
 
-		console.log("Welcome " + customer.name 	+ " to our advanced pension planner!")
-		console.log("You are starting with " 	+ customer.finances.startcapital + " and add a monthly amount of " + customer.finances.monthlyadd )
-		console.log("When you retire at age " 	+ customer.pension.age + " you will have the following: ")
+	console.log("Welcome " + customer.name 	+ " to our advanced pension planner!")
+	console.log("You are starting with " 	+ customer.finances.startcapital + " and add a monthly amount of " + customer.finances.monthlyadd )
+	console.log("When you retire at age " 	+ customer.pension.age + " you will have the following: ")
 
-		console.log("In a pessimistic scenario: €" 	+ prettyNr(customer.pension.endamount.pessimistic))
-		console.log("In a average scenario: €" 		+ prettyNr(customer.pension.endamount.average))
-		console.log("In a optimistic scenario: €" 	+ prettyNr(customer.pension.endamount.optimistic))
+	console.log("In a pessimistic scenario: €" 	+ prettyNr(customer.pension.endamount.pessimistic))
+	console.log("In a average scenario: €" 		+ prettyNr(customer.pension.endamount.average))
+	console.log("In a optimistic scenario: €" 	+ prettyNr(customer.pension.endamount.optimistic))
 
-		let result = {
-			name: customer.name,
-			startcapital: customer.finances.startcapital,
-			monthly: customer.finances.monthlyadd,
-			pensionage: customer.pension.age,
-			pessimistic: "€" + prettyNr(customer.pension.endamount.pessimistic),
-			average: "€" + prettyNr(customer.pension.endamount.average),
-			optimistic: "€" + prettyNr(customer.pension.endamount.optimistic)
+	let result = {
+		name: customer.name,
+		startcapital: customer.finances.startcapital,
+		monthly: customer.finances.monthlyadd,
+		pensionage: customer.pension.age,
+		pessimistic: "€" + prettyNr(customer.pension.endamount.pessimistic),
+		average: "€" + prettyNr(customer.pension.endamount.average),
+		optimistic: "€" + prettyNr(customer.pension.endamount.optimistic)
+	}
+	resultArray.push(result)
+	let makeJson = JSON.stringify(resultArray)
+	fs.writeFile(__dirname + '/customerprojections.json', makeJson, (mistake) => {
+		if(mistake) {
+			throw mistake
 		}
-		resultArray.push(result)
-		let makeJson = JSON.stringify(resultArray)
-		fs.writeFile(__dirname + '/customerprojections.json', makeJson, function(mistake) {
-			if(mistake) {
-				throw mistake
-			}
-		})
+	})
 }	
 
 module.exports = fs.readdir

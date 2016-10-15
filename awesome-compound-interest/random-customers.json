@@ -1,0 +1,16 @@
+{
+	"name": ,
+	"age": ,
+	"finances": {
+		"startcapital": ,
+		"monthlyadd": 
+	},
+	"pension": {
+		"age": ,
+		"interest": {
+			"pessimistic": ,
+			"average": ,
+			"optimistic": 
+		}
+	}
+}
