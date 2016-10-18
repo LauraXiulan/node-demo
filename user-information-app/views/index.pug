@@ -1,0 +1,9 @@
+html
+	head
+		script(src = "app.js").
+		script(type='text/javascript').
+	body
+		h1 User List
+		ul
+			each thing in data
+				li #{thing.firstname} #{thing.lastname}: #{thing.email}
