@@ -36,14 +36,13 @@ app.post('/search', (req, res) => {
 	let userSearch = req.body.search
 	fs.readFile(__dirname + '/users.json', (err, data) => {
 		if(err) throw err
+		let user = []
 		let parsedData = JSON.parse(data)
 		for(let i = 0; i < parsedData.length; i++) {
 			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
-			let user = []
 			user.push(parsedData[i].firstname, parsedData[i].lastname, parsedData[i].email)
-			res.render('result', {user: user})	
 			}
-		}
+		} res.render('result', {user: user})	
 	})	
 })
 
