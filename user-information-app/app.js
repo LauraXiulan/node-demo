@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 		if(err) throw err
 		let parsedData = JSON.parse(data)
 		res.render('index', {data: parsedData})
-		console.log({data: parsedData})
 	})
 })
 
@@ -55,22 +54,23 @@ app.get('/add', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
-	console.log(req.body.first)
-	// let newUser = {
-	// 	firstname: req.body.firstname,
-	// 	lastname: req.body.lastname,
-	// 	email: req.body.email
-	// }
-	// fs.readFile(__dirname + '/users.json', (err, data) => {
-	// 	if(err) throw err
-	// 	let parsedData = JSON.parse(data)
-	// 	parsedData.push(newUser)
-	// 	console.log(parsedData)
-	// })
-		// fs.writeFile(__dirname + '/users.json', parsedData, (mistake) => {
-		// 	if(mistake) throw mistake
-		// })
-
+	let newUser = {
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		email: req.body.email
+	}
+	fs.readFile(__dirname + '/users.json', (err, data) => {
+		if(err) throw err
+		let parsedData = JSON.parse(data)
+		parsedData.push(newUser)
+		console.log(parsedData)	
+		fs.writeFile(__dirname + '/users.json', JSON.stringify(parsedData, null, "\t"), (err) => {
+			if(err) throw err
+			res.redirect('/')
+		})
+		
+	}) 
+	
 })
 
 app.listen(8000, () => {
