@@ -2,13 +2,6 @@ html
 	head
 		script(type='text/javascript').
 	body
-		div#tfheader
-			form(id = "tfheader" method = "get" action = "") Search users 
-				input(type = "text" name="user[firstname]")
-				input(type = "submit")
-				//- each thing in data
-				//- 	if input == firstname || lastname
-				//- 		p #{thing.firstname} #{thing.lastname}: #{thing.email}
-				//- 	else
-				//- 		p User not found
-		div#tfclear
+		form(method = "post" action="") Search users 
+			input(type = "text" name="search")
+			input(type = "submit" value="submit")
