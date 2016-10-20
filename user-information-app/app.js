@@ -8,6 +8,7 @@ const app = express()
 
 app.set('view engine', 'pug')
 app.set('views', __dirname + '/views')
+app.use(express.static('static'))
 
 app.get('/index', (req, res) => {
 	response.send('Page opened')
@@ -40,7 +41,7 @@ app.post('/search', (req, res) => {
 		let parsedData = JSON.parse(data)
 		for(let i = 0; i < parsedData.length; i++) {
 			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
-			user.push(parsedData[i].firstname, parsedData[i].lastname, parsedData[i].email)
+			user.push(parsedData[i])
 			}
 		} res.render('result', {user: user})	
 	})	
@@ -61,8 +62,7 @@ app.post('/add', (req, res) => {
 	fs.readFile(__dirname + '/users.json', (err, data) => {
 		if(err) throw err
 		let parsedData = JSON.parse(data)
-		parsedData.push(newUser)
-		console.log(parsedData)	
+		parsedData.push(newUser)	
 		fs.writeFile(__dirname + '/users.json', JSON.stringify(parsedData, null, "\t"), (err) => {
 			if(err) throw err
 			res.redirect('/')

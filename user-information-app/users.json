@@ -22,16 +22,21 @@
 	{
 		"firstname": "Laura",
 		"lastname": "Kramer",
-		"email": "laurakramer91@gmail.com"
+		"email": "laura@gmail.com"
 	},
 	{
 		"firstname": "Esther",
 		"lastname": "Kramer",
-		"email": "estherk93@live.nl"
+		"email": "esther@live.nl"
 	},
 	{
 		"firstname": "Robin",
 		"lastname": "Kramer",
-		"email": "robin_hoedje@live.nl"
+		"email": "robin@live.nl"
+	},
+	{
+		"firstname": "Ilana",
+		"lastname": "Enderman",
+		"email": "ilana@gmail.com"
 	}
 ]

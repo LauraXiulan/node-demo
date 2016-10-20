@@ -1,9 +1,13 @@
 html
 	head
-		script(type='text/javascript').
+		link(rel = "stylesheet" href = "style.css" type = "text/css")
 	body
 		div.container
-			section#content
-				form(method = "post" action="/search") Search users 
-					input(type = "text" name="search")
-					input(type = "submit" value="submit")
+			section#content1
+				form(method = "post" action="/search") 
+					input(type = "text" name="search" placeholder = "Search Users")
+					input(type = "submit" value="Submit")
+					br
+					a(class = "button" href = "/") Full User List
+					a(class = "button" href = "/add") Create Account
+				br

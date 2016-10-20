@@ -1,8 +1,20 @@
 html
 	head
-		script(src = "app.js").
-		script(type='text/javascript').
+		link(rel = "stylesheet" href = "style.css" type = "text/css")
 	body
-		h1 User found
-		each thing in user
-			p #{thing}
+		div.container
+			section#content
+				h1 Results
+				ul
+					if (user.length == 0)
+						p User not found
+					else
+						each thing in user
+							li #{thing.firstname} #{thing.lastname}: #{thing.email}
+ 
+						
+						
+				br
+				a(class = "button" href = "/search") Go back to search
+				a(class = "button" href = "/add") Create Account
+				a(class = "button" href = "/") Full User List
