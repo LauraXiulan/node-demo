@@ -37,7 +37,8 @@ app.post('/', (req,res) => {
 		age: Number(req.body.age),
 		finances: {
 			startcapital: Number(req.body.capital),
-			monthlyadd: Number(req.body.add)
+			monthlyadd: Number(req.body.add),
+			increase: Number(req.body.increase)
 		},
 		pension: {
 			age: Number(req.body.pension),
@@ -53,20 +54,28 @@ app.post('/', (req,res) => {
 		average: newPension.finances.startcapital,
 		optimistic: newPension.finances.startcapital
 	}
+	let yearlyadd1 = newPension.finances.increase / 100 + 1
 	newPension.pension.duration = (newPension.pension.age - newPension.age)
+	let month = (newPension.finances.monthlyadd * 12)
 	for(let i = newPension.pension.duration - 1; i >= 0; i--) {
-		newPension.pension.endamount.pessimistic += (newPension.finances.monthlyadd * 12)
-		newPension.pension.endamount.average += (newPension.finances.monthlyadd * 12)
-		newPension.pension.endamount.optimistic += (newPension.finances.monthlyadd * 12)
-
+		newPension.pension.endamount.pessimistic += month
+		newPension.pension.endamount.average += month
+		newPension.pension.endamount.optimistic += month
+		
 		newPension.pension.endamount.pessimistic *= newPension.pension.interest.pessimistic
 		newPension.pension.endamount.average *= newPension.pension.interest.average
 		newPension.pension.endamount.optimistic *= newPension.pension.interest.optimistic
+
+		if (i < 39) {
+		month *= yearlyadd1
+		}
+		console.log(month)
 	}
 	let result = {
 		name: newPension.name,
 		startcapital: newPension.finances.startcapital,
 		monthly: newPension.finances.monthlyadd,
+		increase: newPension.finances.increase,
 		pensionage: newPension.pension.age,
 		pessimistic: "€" + prettyNr(newPension.pension.endamount.pessimistic),
 		average: "€" + prettyNr(newPension.pension.endamount.average),
@@ -80,3 +89,10 @@ app.post('/', (req,res) => {
 app.listen(8000, () => {
 	console.log("Server running")
 })
+
+
+
+/* add increase invested income yearly (x%) monthlyadd 
+monthlyadd *= x
+
+increase: x%*/
