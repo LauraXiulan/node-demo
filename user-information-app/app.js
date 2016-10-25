@@ -28,24 +28,41 @@ app.get('/', (req, res) => {
 
 //Search users
 app.get('/search', (req, res) => {
-		res.render('search')
+	res.render('search')
+})
+
+app.post('/search', bodyParser.urlencoded({extended: true}), (req, res) => {
+	let input = req.body.input
+	fs.readFile(__dirname + '/users.json', (err, data) => {
+		if(err) throw err
+		let result = []
+		let parsedData = JSON.parse(data)
+		for(let i = 0; i < parsedData.length; i++) {
+			let firstname = parsedData[i].firstname
+			let lastname = parsedData[i].lastname
+			if(firstname.indexOf(input) == 0 || lastname.indexOf(input) == 0) {
+				result.push(parsedData[i])		
+			}	
+		} 
+		res.send({data: result})
+	})
 })
 
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.post('/search', (req, res) => {
-	let userSearch = req.body.search
-	fs.readFile(__dirname + '/users.json', (err, data) => {
-		if(err) throw err
-		let user = []
-		let parsedData = JSON.parse(data)
-		for(let i = 0; i < parsedData.length; i++) {
-			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
-			user.push(parsedData[i])
-			}
-		} res.render('result', {user: user})	
-	})	
-})
+// app.post('/search', (req, res) => {
+// 	let userSearch = req.body.search
+// 	fs.readFile(__dirname + '/users.json', (err, data) => {
+// 		if(err) throw err
+// 		let user = []
+// 		let parsedData = JSON.parse(data)
+// 		for(let i = 0; i < parsedData.length; i++) {
+// 			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
+// 			user.push(parsedData[i])
+// 			}
+// 		} res.render('result', {user: user})	
+// 	})	
+// })
 
 
 //Add users form
