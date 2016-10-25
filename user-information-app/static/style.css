@@ -107,7 +107,7 @@ p {
 	position: relative;
 	text-align: center;
 	text-shadow: 0 1px 0 #fff;
-	width: 550px;
+	width: 650px;
 	border-radius: 30px;
 }
 #content1 form {
@@ -134,7 +134,7 @@ p {
 	color: #85592e;
 	cursor: pointer;
 	font: bold 15px Helvetica, Arial, sans-serif;
-	height: 35px;
+	height: 30px;
 	margin: 20px 0 20px 0;
 	padding: 0 5px;
 	position: relative;
