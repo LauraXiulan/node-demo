@@ -1,0 +1,42 @@
+[
+	{
+		"firstname": "Alexandre",
+		"lastname": "Marjan",
+		"email": "a.marjan@gmail.com"
+	},
+	{
+		"firstname": "Ulysses",
+		"lastname": "Silvio",
+		"email": "silverspoon87@gmail.com"
+	},
+	{
+		"firstname": "Viktor",
+		"lastname": "Gul",
+		"email": "viktor.rose@gmail.com"
+	},
+	{
+		"firstname": "Kamalani",
+		"lastname": "Georgy",
+		"email": "georgy.porgy@gmail.com"
+	},
+	{
+		"firstname": "Laura",
+		"lastname": "Kramer",
+		"email": "laura@gmail.com"
+	},
+	{
+		"firstname": "Esther",
+		"lastname": "Kramer",
+		"email": "esther@live.nl"
+	},
+	{
+		"firstname": "Robin",
+		"lastname": "Kramer",
+		"email": "robin@live.nl"
+	},
+	{
+		"firstname": "Ilana",
+		"lastname": "Enderman",
+		"email": "ilana@gmail.com"
+	}
+]

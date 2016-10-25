@@ -1,0 +1,16 @@
+html
+	head
+		link(rel = "stylesheet" href = "style.css" type = "text/css")
+		script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+	body
+		div.container
+			section#content1
+				form(method = "post" action="/search") 
+					input(type = "text" id = "user" name="search" placeholder = "Search Users")
+					div#suggestion-box
+					input(type = "submit" value="Submit")
+					br
+					a(class = "button" href = "/") Full User List
+					a(class = "button" href = "/add") Create Account
+				br
+		
