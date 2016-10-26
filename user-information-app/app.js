@@ -50,19 +50,19 @@ app.post('/search', bodyParser.urlencoded({extended: true}), (req, res) => {
 
 app.use(bodyParser.urlencoded({extended: false}))
 
-// app.post('/search', (req, res) => {
-// 	let userSearch = req.body.search
-// 	fs.readFile(__dirname + '/users.json', (err, data) => {
-// 		if(err) throw err
-// 		let user = []
-// 		let parsedData = JSON.parse(data)
-// 		for(let i = 0; i < parsedData.length; i++) {
-// 			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
-// 			user.push(parsedData[i])
-// 			}
-// 		} res.render('result', {user: user})	
-// 	})	
-// })
+app.post('/search', (req, res) => {
+	let userSearch = req.body.search
+	fs.readFile(__dirname + '/users.json', (err, data) => {
+		if(err) throw err
+		let user = []
+		let parsedData = JSON.parse(data)
+		for(let i = 0; i < parsedData.length; i++) {
+			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
+			user.push(parsedData[i])
+			}
+		} res.render('result', {user: user})	
+	})	
+})
 
 
 //Add users form
