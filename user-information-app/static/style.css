@@ -101,15 +101,62 @@ p {
 #content1 {
 	background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
 	box-shadow: 0 1px 0 #fff inset;
-	border: 2px solid #c4c6ca;
+	border: 1px solid #c4c6ca;
 	margin: 0 auto;
 	padding: 25px 0 0;
 	position: relative;
 	text-align: center;
 	text-shadow: 0 1px 0 #fff;
-	width: 650px;
-	border-radius: 30px;
+	width: 600px;
 }
+
+#content1 h1 {
+	color: #7E7E7E;
+	font: bold 25px Helvetica, Arial, sans-serif;
+	letter-spacing: -0.05em;
+	line-height: 20px;
+	margin: 10px 0 30px;
+}
+#content1 h1:before,
+#content1 h1:after {
+	content: "";
+	height: 1px;
+	position: absolute;
+	margin: 10px 0 50px;
+	width: 27%;
+}
+#content1 h1:after {
+	background: -webkit-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	right: 0;
+}
+#content1 h1:before {
+	background: -webkit-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	left: 0;
+}
+
+#content1:after,
+#content1:before {
+	background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+	border: 1px solid #c4c6ca;
+	content: "";
+	display: block;
+	height: 100%;
+	left: -1px;
+	position: absolute;
+	width: 100%;
+}
+
+#content1:after {
+	transform: rotate(2deg);
+	top: 0;
+	z-index: -1;
+}
+#content1:before {
+	transform: rotate(-3deg);
+	top: 0;
+	z-index: -2;
+}
+
 #content1 form {
 	margin: 0 20px;
 	position: relative;
@@ -140,6 +187,10 @@ p {
 	position: relative;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	width: 80px;
+}
+
+p#result {
+	margin-left: 5px;
 }
 
 /* Add-user Page */
