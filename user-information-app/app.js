@@ -51,8 +51,12 @@ app.post('/ajaxsearch', bodyParser.urlencoded({extended: true}), (req, res) => {
 
 app.use(bodyParser.urlencoded({extended: false}))
 
+function titleCase(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 app.post('/search', (req, res) => {
-	let userSearch = req.body.search
+	let userSearch = titleCase(req.body.search)
 	fs.readFile(__dirname + '/users.json', (err, data) => {
 		if(err) throw err
 		let user = []
