@@ -4,7 +4,7 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
-	background-color: ghostwhite;
+	background-color: snow;
 }
 .container {
 	margin: 25px auto;
@@ -165,7 +165,7 @@ p {
 	border-radius: 3px;
 	box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
 	transition: all 0.5s ease;
-	background: snow;
+	background: white;
 	border: 1px solid #c8c8c8;
 	color: #777;
 	font: 15px Helvetica, Arial, sans-serif;

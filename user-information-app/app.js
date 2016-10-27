@@ -31,7 +31,7 @@ app.get('/search', (req, res) => {
 	res.render('search')
 })
 
-app.post('/search', bodyParser.urlencoded({extended: true}), (req, res) => {
+app.post('/ajaxsearch', bodyParser.urlencoded({extended: true}), (req, res) => {
 	let input = req.body.input
 	fs.readFile(__dirname + '/users.json', (err, data) => {
 		if(err) throw err
@@ -41,6 +41,7 @@ app.post('/search', bodyParser.urlencoded({extended: true}), (req, res) => {
 			let firstname = parsedData[i].firstname
 			let lastname = parsedData[i].lastname
 			if(firstname.indexOf(input) == 0 || lastname.indexOf(input) == 0) {
+				//To search on all letters: if(firstname.indexOf(input) > -1) {
 				result.push(parsedData[i])		
 			}	
 		} 
@@ -57,7 +58,7 @@ app.post('/search', (req, res) => {
 		let user = []
 		let parsedData = JSON.parse(data)
 		for(let i = 0; i < parsedData.length; i++) {
-			if(userSearch == parsedData[i].firstname || userSearch == parsedData[i].lastname) {
+			if(parsedData[i].firstname.indexOf(userSearch) == 0 || parsedData[i].lastname.indexOf(userSearch) == 0) {
 			user.push(parsedData[i])
 			}
 		} res.render('result', {user: user})	
