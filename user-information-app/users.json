@@ -43,5 +43,10 @@
 		"firstname": "Bob",
 		"lastname": "De Blob",
 		"email": "bobdeblob@gmail.com"
+	},
+	{
+		"firstname": "Minion",
+		"lastname": "Banana",
+		"email": "bananas@gmail.com"
 	}
 ]
