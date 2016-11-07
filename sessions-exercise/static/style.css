@@ -1,0 +1,63 @@
+body {
+	padding-top: 10px;
+	text-align: center;
+	background-color: #E9DE50;
+}
+
+h2 {
+	text-align: center;
+	font-size: 32px;
+	text-shadow: 1px 1px purple ;
+	font-style: bold;
+}
+
+#mainimg {
+	width: 400px;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h3 {
+	font-style: italic;
+}
+
+#home {
+	float: left;
+}
+
+#logout {
+	float: right;
+}
+
+#container {
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img {
+	width: 150px;
+	height: 150px;
+}
+
+form {
+	padding-top: 100px;
+}
+
+label {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+input {
+	border-radius: 30px;
+}
+
+img#lama {
+	width: 600px;
+	height: auto;
+}
+
+a {
+	font-size: 24px;
+}
