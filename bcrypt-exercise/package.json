@@ -1,0 +1,15 @@
+{
+  "name": "bcrypt-exercise",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laura",
+  "license": "MIT"
+}
